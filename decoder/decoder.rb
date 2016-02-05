@@ -37,7 +37,7 @@ class Decoder
 	#This method will attempt to decode a message by trying all possible code wheel offsets
 	def crack(message)
 		(0..27).each do |offset|
-			puts decode(message, offset)
+			puts "Key: #{@decoded[offset]} Message: #{decode(message,offset)}"
 		end
     end
 end
