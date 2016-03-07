@@ -1,19 +1,22 @@
+//littleBits dump truck that moves forward with a DC motor and tips with a servo motor
 int button = A0;
 int motor = 5;
 int servo = 9;
 
+// setup is run once on board start
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
   pinMode(button, INPUT);
   pinMode(motor, OUTPUT);
 }
 
+int truckBedStart = 128;
+
+//main application loop
 void loop() {
   //reset servo to start position
-  analogWrite(servo, 128);
-  // put your main code here, to run repeatedly:
-  int buttonValue =  analogRead(button);
+  analogWrite(servo, truckBedStart);
+  int buttonValue =  analogRead(button);//value from 0-1023
   if (buttonValue > 500) {
     drive(25);
     tip();
@@ -21,19 +24,24 @@ void loop() {
   }
 }
 
+//drive the truck forward by the given distance
 void drive(int distance) {
   analogWrite(motor, 255);
   delay(distance*100);
   analogWrite(motor, 0);
 }
 
+//raise gate to dump truck contents
 void tip() {
-  for (int i = 128; i > 0; i--) {
+  //slowly raise the gate
+  for (int i = truckBedStart; i > 0; i--) {
     analogWrite(servo, i);
     delay(10);
   }
+  //wait for contents to pour out of truck
   delay(2000);
-  analogWrite(servo, 128);
+  //lower gate back to start position
+  analogWrite(servo, truckBedStart);
   
 }
 
