@@ -18,9 +18,9 @@ void loop() {
   analogWrite(servo, truckBedStart);
   int buttonValue =  analogRead(button);//value from 0-1023
   if (buttonValue > 500) {
+    //put code to drive the dump truck here
     drive(25);
     tip();
-    drive(25);
   }
 }
 
