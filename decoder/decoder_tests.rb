@@ -1,6 +1,6 @@
 require './decoder'
 
 myDecoder = Decoder.new
-myDecoder.crack("ZOUD UD ?F EBANT EI! FBX QUVXJN UZ BXZW")
-#msg = myDecoder.encode("THIS IS MY CODE! CAN YOU FIGURE IT OUT?", 14)
+myDecoder.crack("DSSJ TXPLF")
+#msg = myDecoder.encode("DID YOU CRACK THE CODE? YES YOU DID!", 12)
 #puts msg
